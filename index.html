@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Inventory Team 2</title>
+
+    <style>
+      body {
+        background-image: url('img/background.png');
+        background-repeat: no-repeat;
+        background-size: cover;
+      }
+
+      .bagBrand {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        background-color: #29352f;
+        color: #aca599;
+        height: 65px;
+        font-size: xx-large;
+        font-family: Georgia;
+        max-width: 600px;
+      }
+      #inventoryBag {
+        display: grid;
+        grid-template-columns: repeat(3, 200px);
+        grid-template-rows: repeat(3, 200px);
+        grid-area: inventory;
+      }
+      #loot {
+        display: grid;
+        grid-template-columns: repeat(3, 200px);
+        grid-template-rows: repeat(3, 200px);
+        grid-area: loot;
+      }
+      #loot > div {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      }
+      .styling {
+        display: grid;
+        grid-template-columns: 300px repeat(3, 1fr);
+        grid-template-areas: 'auto inventory loot';
+        /* grid-template-rows: repeat(3, 200px); */
+      }
+      #inventoryBag > div {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        border: solid black 1px;
+        background-color: sandybrown;
+      }
+
+      #inventoryBag.inventory {
+        display: none;
+      }
+
+      img {
+        max-height: 100%;
+        max-width: 100%;
+      }
+
+      #button {
+        background-image: url('img/cubeteam2.png');
+        background-size: contain;
+        background-repeat: no-repeat;
+        width: 200px;
+        height: 200px;
+      }
+
+      #button:hover {
+        background-image: url('img/cubeteam2-2-open.png');
+      }
+      #button.open {
+        background-image: url('img/Cubeteam2-open.png');
+        height: 500px;
+      }
+    </style>
+  </head>
+
+  <!-- to do: 
+  Sett inn endring for å gjøre musepeker til valgt bilde.
+  Gjør ferdig formatering av bag og loot 
+  Jazz opp mer om idèflommen strømmer-->
+  <body>
+    <!-- <div class="bagBrand">Team 2 - bagasje</div> -->
+    <br />
+    <!-- <button onclick="toggleInventory()">X</button> -->
+    <!-- <img onclick="toggleInventory()" src="img/cubeteam2.png" alt="" /> -->
+
+    <br />
+    <div class="styling">
+      <div id="button" onclick="toggleInventory()"></div>
+      <div class="inventory" id="inventoryBag">
+        <div onclick="select(this)"></div>
+        <div onclick="select(this)"></div>
+        <div onclick="select(this)"></div>
+        <div onclick="select(this)"></div>
+        <div onclick="select(this)"></div>
+        <div onclick="select(this)"></div>
+        <div onclick="select(this)"></div>
+        <div onclick="select(this)"></div>
+        <div onclick="select(this)"></div>
+      </div>
+      <div id="loot">
+        <div onclick="select(this)">
+          <img src="img/terje1.jpg" alt="" srcset="" />
+        </div>
+        <div onclick="select(this)">
+          <img src="img/Adne.png" alt="" srcset="" />
+        </div>
+        <div onclick="select(this)">
+          <img src="img/Miguel.png" alt="" srcset="" />
+        </div>
+        <div onclick="select(this)">
+          <img src="img/terje2.webp" alt="" srcset="" />
+        </div>
+        <div onclick="select(this)">
+          <img src="img/Kevin.png" alt="" srcset="" />
+        </div>
+        <div onclick="select(this)">
+          <img src="img/Terje3.jpg" alt="" srcset="" />
+        </div>
+        <div onclick="select(this)">
+          <img src="img/Tobias.png" alt="" srcset="" />
+        </div>
+        <div onclick="select(this)">
+          <img src="img/terje4.png" alt="" srcset="" />
+        </div>
+        <div onclick="select(this)">
+          <img src="img/Jarl.png" alt="" srcset="" />
+        </div>
+      </div>
+    </div>
+    <script>
+      let selectedItem;
+
+      function select(item) {
+        /* Hvis selectedItem allerede er valgt, bytt ut cellen man trykker på med denne */
+        if (selectedItem) {
+          if (!item.innerHTML) {
+            item.innerHTML = selectedItem;
+            selectedItem = '';
+          }
+          /* Hvis ikke, definer selectedItem som valgt celle */
+        } else {
+          selectedItem = item.innerHTML;
+          item.innerHTML = '';
+        }
+      }
+      function toggleInventory() {
+        document.getElementById('inventoryBag').classList.toggle('inventory');
+        document.getElementById('button').classList.toggle('open');
+      }
+    </script>
+  </body>
+</html>
